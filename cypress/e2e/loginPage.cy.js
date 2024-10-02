@@ -3,12 +3,9 @@ describe('The Home Page', () => {
       cy.clearLocalStorage(); 
     });
     it('It obtains the API token', () => {
-      const MIAPI = Cypress.env('VITE_MIAPI');
-      const name = Cypress.env('VITE_NAME');
-      const password = Cypress.env('VITE_PASSWORD');  
-      cy.log('VITE_MIAPI is set:', MIAPI ? 'Yes' : 'No');
-      cy.log('VITE_NAME is set:', name ? 'Yes' : 'No');
-      cy.log('VITE_PASSWORD is set:', password ? 'Yes' : 'No');
+      const MIAPI = process.env.VITE_MIAPI;
+      const name = process.env.VITE_NAME;
+      const password = process.env.VITE_PASSWORD; 
 
 
       cy.request({
@@ -33,8 +30,8 @@ describe('The Home Page', () => {
       cy.visit('/') 
       cy.url().should('include', '/login')      
 
-      const email = Cypress.env('VITE_NAME');
-      const pass = Cypress.env('VITE_PASSWORD');
+      const email = process.env('VITE_NAME');
+      const pass = process.env('VITE_PASSWORD');
 
       cy.get('input[name=name]').type(`${email}`)
       cy.get('input[type=password]').type(`${pass}`)
