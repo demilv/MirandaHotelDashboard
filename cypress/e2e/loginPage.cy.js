@@ -5,7 +5,13 @@ describe('The Home Page', () => {
     it('It obtains the API token', () => {
       const MIAPI = Cypress.env('VITE_MIAPI');
       const name = Cypress.env('VITE_NAME');
-      const password = Cypress.env('VITE_PASSWORD');      cy.request({
+      const password = Cypress.env('VITE_PASSWORD');  
+      cy.log('VITE_MIAPI is set:', MIAPI ? 'Yes' : 'No');
+      cy.log('VITE_NAME is set:', name ? 'Yes' : 'No');
+      cy.log('VITE_PASSWORD is set:', password ? 'Yes' : 'No');
+
+
+      cy.request({
         method: 'POST',
         url: `${MIAPI}/login`, 
         body: {
